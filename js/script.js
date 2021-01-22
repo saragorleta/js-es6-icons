@@ -1,9 +1,9 @@
-Aggiungere i colori ad ogni categoria: blue per gli animali, orange per i vegetali e viola per gli utenti.
-Prendete i colori da un altro array.
-Stampare poi tutte le icone utilizzando il template literal.
-Stampare quindi nella select tutti i tipi che avete in precedenza selezionato (animal, vegetable, icon).
-Filtrare i risultati in base alla categoria (ricordate di svuotare il container).
-Utilizzate forEach, map e filter e cercate di strutturare tutto con le funzioni.
+// Aggiungere i colori ad ogni categoria: blue per gli animali, orange per i vegetali e viola per gli utenti.
+// Prendete i colori da un altro array.
+// Stampare poi tutte le icone utilizzando il template literal.
+// Stampare quindi nella select tutti i tipi che avete in precedenza selezionato (animal, vegetable, icon).
+// Filtrare i risultati in base alla categoria (ricordate di svuotare il container).
+// Utilizzate forEach, map e filter e cercate di strutturare tutto con le funzioni.
 
 
 const icons = [
