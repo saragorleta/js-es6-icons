@@ -104,7 +104,18 @@ const icons = [
       family: 'fas',
     }
   ];
+// ragionamento Cristina
+// -creare due array uno per colori
+// -uno per tipologie
+// const colore=[blue, orange, violet];
+// const type=[animal, vegetables, user];
 
+
+
+
+
+
+// ragionamento da sola
 // ****Aggiungere i colori ad ogni categoria: blue per gli animali, orange per i vegetali e viola per gli utenti.
 // Prendete i colori da un altro array.***
 
@@ -114,6 +125,7 @@ const orange = '#d99419';
 const violet = '#4b2675';
 // li inserisco nell'array
 const colore=[blue, orange, violet];
+
 //con map associo i colori ad ogni categoria
 const newIcons = icons.map((element) => {
   return {
@@ -133,8 +145,7 @@ icon.forEach((element) => {
   const {name, prefix,type,family,colore} = element;
   document.getElementById('nuove-icone').innerHTML += `
   <div>
-    style="color:${ribbon.color}; filter:opacity(${ribbon.opacity}%)"></i>
-    Nome: ${name} - Prefix: ${Prefix} - tipo: ${type} - famiglia: ${family} - colore: ${color}
+    Nome: ${name} - Prefix: ${prefix} - tipo: ${type} - famiglia: ${family} - colore: ${color}
   </div>
   `;
 });
