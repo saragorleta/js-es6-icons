@@ -151,7 +151,7 @@ return {
   ...element,  //mi devi restituire tutti gli elementi(CON INDICE CALCOLATO)
   color: colors[indexTypes]; //e associargli il colore in base all'indice
 }
-console.log(iconsColor);// otteniamo i colori associati al tipo
+console.log(iconsColor);// otteniamo così i colori associati al tipo
 
 // STAMPIAMO LE ICONE CON I COLORI:
 // 1) creiamo la funzione:
@@ -189,74 +189,17 @@ function printFilter(array, select){
 const seleziona = $('#types'){
   printFilter(newArrayTypes,select);
 });
-    //ma avremmo potuto scrivere anche cosi:
-//cicliamo su array newArrayTypes
-//newArrayTypes.forEach((element) => {
+    // ma avremmo potuto scrivere anche cosi:
+    // cicliamo su array newArrayTypes
+newArrayTypes.forEach((element) => {
 //selezioniamo #types e aggiungiamo
-//   $('#types').append(`
-  //element(=all), animal , vegetables user
-//     <option value="${element}"">${animal}${vegetables}${user}</option>
-//     `
-//   )
-// });
+  $('#types').append(`
+  element(=all), animal , vegetables user
+    <option value="${element}"">${animal}${vegetables}${user}</option>
+    `
+  )
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ragionamento da sola
-// ****Aggiungere i colori ad ogni categoria: blue per gli animali, orange per i vegetali e viola per gli utenti.
-// Prendete i colori da un altro array.***
-
-//preparo i colori
-// const blue = '#1e5bb3';
-// const orange = '#d99419';
-// const violet = '#4b2675';
-// // li inserisco nell'array
-// const colore=[blue, orange, violet];
-//
-// //con map associo i colori ad ogni categoria
-// const newIcons = icons.map((element) => {
-//   return {
-//     ...element,
-//     colore: {
-//       color: (element.type == 'animal') ? blue,
-//       color:(element.type== 'vegetable') ? orange : violet
-//     }
-//   }
-// });
-//
-// console.log(newIcons);
-//
-// //***Stampare poi tutte le icone utilizzando il template literal.***
-//
-// icon.forEach((element) => {
-//   const {name, prefix,type,family,colore} = element;
-//   document.getElementById('nuove-icone').innerHTML += `
-//   <div>
-//     Nome: ${name} - Prefix: ${prefix} - tipo: ${type} - famiglia: ${family} - colore: ${color}
-//   </div>
-//   `;
-// });
+seleziona.change(function(){
+  const selezionato=$(this).val();
+});
