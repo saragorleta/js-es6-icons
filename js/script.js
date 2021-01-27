@@ -154,7 +154,7 @@ const iconsColor= icons.map((element) => {
 
 // STAMPIAMO LE ICONE CON I COLORI:
 // 1) creiamo la funzione:
-function printIcons(element, container){
+function printIcons(array, container){
   array.forEach((element) => {
     const {name, family, prefix, type, color}=element;//abbiamo destrutturato
   container.append(`
@@ -167,8 +167,8 @@ function printIcons(element, container){
 }
 // 2)richiamiamo la funzione:
 const contenitoreIcone = $('.icons'); //.icons è il nome classe in html
-printIcons(iconsColor, container);
-
+printIcons(iconsColor,contenitoreIcone);
+console.log(iconsColor);
 
 // STAMPIAMO IL FILTRO:
 // 1)creiamo la funzione:
@@ -182,25 +182,15 @@ function printOptions(array, select){
   });
 }
 // 2)richiamo la funzione:
-const select = $('#types');
-  printFilter(newArrayTypes,select);
-
-    // ma avremmo potuto scrivere anche cosi:
-    // cicliamo su array newArrayTypes
-newArrayTypes.forEach((element) => {
-//selezioniamo #types e aggiungiamo
-  $('#types').append(`
-  element(=all), animal , vegetables user
-    <option value="${element}"">${animal}${vegetables}${user}</option>`
-  )
-});
+const select = $('#type');
+  printOptions(newArrayTypes,select);
 
 select.change(function(){
   const selezionato=$(this).val();
 });
 
 function filterValue(array, type){
-  const filteredIcons=array.filter(element) => {
+  const filteredIcons= array.filter((element) => {
     return element.type = type;
   });
 }
