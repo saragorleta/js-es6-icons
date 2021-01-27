@@ -155,12 +155,16 @@ const iconsColor= icons.map((element) => {
 // STAMPIAMO LE ICONE CON I COLORI:
 // 1) creiamo la funzione:
 function printIcons(array, container){
+  container.html(' '); //svuotiamo il container
+
   array.forEach((element) => {
+
     const {name, family, prefix, type, color}=element;//abbiamo destrutturato
+
   container.append(`
     <div class="icon">
-      <i class="${family} ${prefix} ${name} ${type} ${color}"></i>
-      <div class="title">"${name.toUpperCase()}"</div>
+      <i class="${family} ${prefix}${name} ${type}" style="color:${color}"></i>
+      <div class="title">${name.toUpperCase()}</div>
     </div>`
   )
   });
@@ -187,6 +191,10 @@ const select = $('#type');
 
 select.change(function(){
   const selezionato=$(this).val();
+
+  const filteredIcons = filterValue(iconsColor, selezionato );
+
+  printIcons(filteredIcons, contenitoreIcone);
 });
 
 function filterValue(array, type){
