@@ -108,7 +108,7 @@ const icons = [
   // -OBIETTIVO:CREARE DUE ARRAY UNO PER COLORE E L'ALTRO PER TYPE
   //creiamo un array con i tre colori che poi si dovranno associare ad:
    // animal vegetables e user
-const colore=[blue, orange, violet];
+const colore=['blue', 'orange', 'violet'];
 
 // Per arrivare ad ottenere questo array [animal, vegetables, user]
 // cicliamo sull'array di partenza (icons):
@@ -136,29 +136,27 @@ function getTypes(array){
 // equivale al nuovo array['animal''vegetable''user']
 // (per comodità lo mettiamo in una const).
 const newArrayTypes=getTypes(icons);
-console.log(newArrayTypes);
+
 
 // mappiamo l'array newArrayTypes per conoscere la sua
 // posizione, il suo indice per poi aggiungere il colore
-// e creiamo una nuova const iconsColor
-const iconsColor=icons.map(element) => {
-  // con l'indexOf lui mi va a vedere quale indice(posizione) ha l'elemento type
-  //sul newArrayTypes
+// e creiamo una nuova const iconsColor.
+// con l'indexOf lui mi va a vedere quale indice(posizione) ha l'elemento type
+//sul newArrayTypes
+const iconsColor= icons.map((element) => {
   indexTypes=newArrayTypes.indexOf(element.type);
-  console.log(indexTypes);
+  return {
+    ...element,  //mi devi restituire tutti gli elementi(CON INDICE CALCOLATO)
+    color: colore[indexTypes]  //e associargli il colore in base all'indice
+  }
 });
-return {
-  ...element,  //mi devi restituire tutti gli elementi(CON INDICE CALCOLATO)
-  color: colors[indexTypes]; //e associargli il colore in base all'indice
-}
-console.log(iconsColor);// otteniamo così i colori associati al tipo
+// console.log(iconsColor);// otteniamo così i colori associati al tipo
 
 // STAMPIAMO LE ICONE CON I COLORI:
 // 1) creiamo la funzione:
 function printIcons(element, container){
   array.forEach((element) => {
     const {name, family, prefix, type, color}=element;//abbiamo destrutturato
-
   container.append(`
     <div class="icon">
       <i class="${family} ${prefix} ${name} ${type} ${color}"></i>
@@ -168,38 +166,41 @@ function printIcons(element, container){
   });
 }
 // 2)richiamiamo la funzione:
-const contenitoreIcone = $('.icons'){ //.icons è il nome classe in html
-  printIcons (iconsColor, container);
-});
+const contenitoreIcone = $('.icons'); //.icons è il nome classe in html
+printIcons(iconsColor, container);
+
 
 // STAMPIAMO IL FILTRO:
 // 1)creiamo la funzione:
-function printFilter(array, select){
-  array.forEach((element) => { //con array consideriamo quello
-                              //che abbiamo creato prima newArrayTypes
-
+function printOptions(array, select){
+  array.forEach((element) => { //con array consideriamo quello che abbiamo creato prima newArrayTypes
     select.append(`
-      <option value="${element}"">${element}</option>
+      <option value="${element}">${element}</option>
     `)
     //<option value="${element}">All</option> element è riferito agli elementi
     //contenuti nell'array newArrayTypes(animal vegetables user)
   });
 }
 // 2)richiamo la funzione:
-const seleziona = $('#types'){
+const select = $('#types');
   printFilter(newArrayTypes,select);
-});
+
     // ma avremmo potuto scrivere anche cosi:
     // cicliamo su array newArrayTypes
 newArrayTypes.forEach((element) => {
 //selezioniamo #types e aggiungiamo
   $('#types').append(`
   element(=all), animal , vegetables user
-    <option value="${element}"">${animal}${vegetables}${user}</option>
-    `
+    <option value="${element}"">${animal}${vegetables}${user}</option>`
   )
 });
 
-seleziona.change(function(){
+select.change(function(){
   const selezionato=$(this).val();
 });
+
+function filterValue(array, type){
+  const filteredIcons=array.filter(element) => {
+    return element.type = type;
+  });
+}
